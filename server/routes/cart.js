@@ -1,7 +1,7 @@
 import express from "express";
 import Session from "../models/Session.js";
 import Course from "../models/Course.js";
-
+ 
 const router = express.Router();
 
 // GET cart
@@ -56,9 +56,6 @@ router.post("/", async (req, res) => {
       }
     );
   }
-
-  console.log(result);
-
   res.status(201).json({ message: "Course added to the cart" });
 });
 
@@ -71,8 +68,6 @@ router.delete("/:courseId", async (req, res) => {
     { _id: sessionId },
     { $pull: { "data.cart": { courseId } } }
   );
-
-  console.log(result);
   res.json({ message: "Cart item deleted" });
 });
 
